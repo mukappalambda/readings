@@ -66,6 +66,9 @@ plugins:
   - search:
       separator: '[\s\u200b\-]'
   - git-revision-date-localized
+  - git-committers:
+      repository: "mukappalambda/readings"
+      branch: main
   # - social
   - tags:
       enabled: !ENV [CI, false]
