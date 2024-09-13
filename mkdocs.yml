@@ -3,6 +3,7 @@ site_url: https://github.com/mukappalambda/readings
 site_author: mukappalambda
 repo_name: readings
 repo_url: https://github.com/mukappalambda/readings
+edit_uri: blob/main/docs/
 
 theme:
   name: material
