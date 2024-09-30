@@ -59,6 +59,7 @@ nav:
       - memorize-sherman-morrison-formula.md
   - Probability:
       - stochastic-calculus/simple.md
+      - gumbel_softmax.md
 
 plugins:
   # - blog
