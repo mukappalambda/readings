@@ -2,7 +2,7 @@
 
 ## Extreme value distribution
 
-We derive the distribution of max of `n` samples drawn from a distribution in two ways. Let's assume that the pdf of the distribution is given by $p(x)$ and the cdf is given by $F(x)$. Thus means $F'(x) = f(x)$.
+We derive the distribution of max of `n` samples drawn from a distribution in two ways. Let's assume that the PDF of the distribution is given by $p(x)$ and the CDF is given by $F(x)$. Thus means $F'(x) = f(x)$.
 
 **1. A combinatorial way to derive the distribution**
 
