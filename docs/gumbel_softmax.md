@@ -28,15 +28,15 @@ We derive the distribution of max of `n` samples drawn from a distribution in tw
 
 ## Deriving Gumbel distribution
 
-In the second example, we would like to pick a value of `M` so that the distribution term takes the form of an expression we are all familiar with. Let $M = X + ln(n)$ for some value $X$. Then we have $e^{-M} = e^{-X}/n$. This gives us:
+In the second example, we would like to pick a value of `M` so that the distribution term takes the form of an expression we are all familiar with. Let $M = X + \ln(n)$ for some value $X$. Then we have $e^{-M} = e^{-X}/n$. This gives us:
 
-- Probability(max of `n` samples = $X + ln(n)$)
+- Probability(max of `n` samples = $X + \ln(n)$)
   - $= e^{-X}(1 - \frac{e^{-X}}{n})^n$
 
 Now as $n \rightarrow \infty$:
 
-- Probability(max of samples = $X + ln(n)$) = $e^{-X}e^{-e^{-X}}$
-- Probability(all samples $\le X + ln(n)$) = $e^{-e^{-X}}$ which is the CDF of the above distribution.
+- Probability(max of samples = $X + \ln(n)$) = $e^{-X}e^{-e^{-X}}$
+- Probability(all samples $\le X + \ln(n)$) = $e^{-e^{-X}}$ which is the CDF of the above distribution.
 
 More generally, the distribution is parameterized by $\mu, \beta$ like so:
 
