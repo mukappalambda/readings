@@ -1,18 +1,21 @@
-[tool.poetry]
+[project]
 name = "readings"
 version = "0.1.0"
 description = ""
-authors = ["mukappalambda <maokailan24@gmail.com>"]
+authors = [
+    {name = "mukappalambda",email = "maokailan24@gmail.com"}
+]
 readme = "README.md"
+requires-python = ">=3.11,<4"
+dependencies = [
+    "mkdocs-material (==9.5.34)",
+    "mkdocs-git-revision-date-localized-plugin (==1.2.6)",
+    "mkdocs-git-committers-plugin-2 (==2.3.0)"
+]
+
+[tool.poetry]
 package-mode = false
 
-[tool.poetry.dependencies]
-python = "^3.11"
-mkdocs-material = "9.5.34"
-mkdocs-git-revision-date-localized-plugin = "1.2.6"
-mkdocs-git-committers-plugin-2 = "2.3.0"
-
-
 [build-system]
-requires = ["poetry-core"]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
