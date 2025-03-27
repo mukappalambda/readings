@@ -57,6 +57,7 @@ nav:
   - Home: index.md
   - Linear Algebra:
       - memorize-sherman-morrison-formula.md
+      - why_krylov_subspace.md
   - Probability:
       - stochastic-calculus/simple.md
       - gumbel_softmax.md
