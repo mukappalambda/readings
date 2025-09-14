@@ -69,7 +69,9 @@ plugins:
   # - offline
   - search:
       separator: '[\s\u200b\-]'
-  - git-revision-date-localized
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: timeago
   - git-committers:
       repository: "mukappalambda/readings"
       branch: main
