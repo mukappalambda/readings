@@ -9,7 +9,7 @@ readme = "README.md"
 requires-python = ">=3.11,<4"
 dependencies = [
     "mkdocs-material (>=9.5.34)",
-    "mkdocs-git-revision-date-localized-plugin (==1.2.6)",
+    "mkdocs-git-revision-date-localized-plugin (>=1.4.7)",
     "mkdocs-git-committers-plugin-2 (==2.3.0)"
 ]
 
