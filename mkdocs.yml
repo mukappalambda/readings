@@ -58,6 +58,7 @@ nav:
   - Linear Algebra:
       - memorize-sherman-morrison-formula.md
       - why_krylov_subspace.md
+      - on-companion-matrices.md
   - Probability:
       - stochastic-calculus/simple.md
       - gumbel_softmax.md
