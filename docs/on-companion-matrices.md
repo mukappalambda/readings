@@ -14,7 +14,7 @@ C=\begin{bmatrix}
 1 && 0 &&  \cdots && 0 && -a_1 \\
 0 && 1 && \cdots && 0 && -a_2 \\
 \vdots && \vdots && \ddots && \vdots && \vdots \\
-0 && \cdots && \cdots && 1 && a_{n-1}
+0 && \cdots && \cdots && 1 && -a_{n-1}
 \end{bmatrix}
 $$
 
