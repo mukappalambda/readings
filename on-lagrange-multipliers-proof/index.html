@@ -10,13 +10,13 @@
         <meta name="author" content="mukappalambda">
       
       
-        <link rel="canonical" href="https://github.com/mukappalambda/readings/why_krylov_subspace/">
+        <link rel="canonical" href="https://github.com/mukappalambda/readings/on-lagrange-multipliers-proof/">
       
       
-        <link rel="prev" href="../memorize-sherman-morrison-formula/">
+        <link rel="prev" href="../on-companion-matrices/">
       
       
-        <link rel="next" href="../on-companion-matrices/">
+        <link rel="next" href="../stochastic-calculus/simple/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -24,7 +24,7 @@
     
     
       
-        <title>Why Krylov Subspace? - Readings</title>
+        <title>The method of Lagrange multipliers - Readings</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#why-krylov-subspace" class="md-skip">
+        <a href="#the-method-of-lagrange-multipliers" class="md-skip">
           Skip to content
         </a>
       
@@ -118,7 +118,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Why Krylov Subspace?
+              The method of Lagrange multipliers
             
           </span>
         </div>
@@ -447,19 +447,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../why_krylov_subspace/" class="md-nav__link">
         
   
   
@@ -470,7 +461,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -503,10 +493,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../on-lagrange-multipliers-proof/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -517,6 +516,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -665,7 +665,7 @@
 
 
   
-    <a href="https://github.com/mukappalambda/readings/blob/main/docs/why_krylov_subspace.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/mukappalambda/readings/blob/main/docs/on-lagrange-multipliers-proof.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -674,33 +674,108 @@
     
       
     
-    <a href="https://github.com/mukappalambda/readings/raw/main/docs/why_krylov_subspace.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/mukappalambda/readings/raw/main/docs/on-lagrange-multipliers-proof.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
     </a>
   
 
 
-<h1 id="why-krylov-subspace">Why Krylov Subspace?</h1>
-<p>This note serves to remind me why the <a href="https://en.wikipedia.org/wiki/Krylov_subspace">Krylov subspace</a> is incredbly popular when it comes to numerical linear algebra.</p>
-<p>We want to solve the linear system <span class="arithmatex">\(Ax = b\)</span> where <span class="arithmatex">\(A\)</span> is <span class="arithmatex">\(n\times n\)</span> and <span class="arithmatex">\(b\in\mathbb{R}^n\)</span>. Let <span class="arithmatex">\(x^*\)</span> be a solution to this linear system. The goal is to claim that <span class="arithmatex">\(x^*\in \mathcal{K}\stackrel{\mathrm{def}}{=}\text{span}(\{b, Ab, A^2b,\ldots, A^{n-1}b\})\)</span>.</p>
-<p>To prove this statement, we separate it into two cases:</p>
-<ul>
-<li>Case 1: <span class="arithmatex">\(A\)</span> is invertible</li>
-<li>Case 2: <span class="arithmatex">\(A\)</span> is not invertible</li>
-</ul>
-<p>But by the end of this note, we will realize that the argument can be simply reduced to <em>Case 2</em>. The reason why I still put the <em>Case 1</em> here is because it makes the whole thought more intuitive to me.</p>
+<h1 id="the-method-of-lagrange-multipliers">The method of Lagrange multipliers</h1>
+<p>This article presents a self-contained proof of the method of Lagrange multipliers.</p>
+<p><span class="arithmatex">\(\textbf{Theorem (Method of Lagrange Multipliers)}\)</span></p>
+<p>Let <span class="arithmatex">\(f: \mathbb{R}^n \to \mathbb{R}\)</span> and <span class="arithmatex">\(\mathbf{g}: \mathbb{R}^n \to \mathbb{R}^m\)</span> are both <span class="arithmatex">\(\mathcal{C}^1\)</span>-functions and <span class="arithmatex">\(m \le n\)</span>. Consider the following optimization problem with equality constraints:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\min_{\mathbf{x}\in\mathbb{R}^n} &amp;\quad f(\mathbf{x}) \\
+\text{subject to}&amp;\quad \mathbf{g}(\mathbf{x}) = \mathbf{0}\tag{P}\
+\end{aligned}
+\]</div>
+<p>If <span class="arithmatex">\(\mathbf{x}^*\in\mathbb{R}^n\)</span> is a <em>regular</em> minimizer for the problem <span class="arithmatex">\((P)\)</span>, then there exists <span class="arithmatex">\(\boldsymbol{\lambda^*}\in\mathbb{R}^m\)</span> such that</p>
+<div class="arithmatex">\[Df(\mathbf{x}^*) + \boldsymbol{\lambda^*}^TD\mathbf{g}(\mathbf{x}^*) = \mathbf{0}^T\tag{1}\]</div>
+<p><span class="arithmatex">\(\boldsymbol{\lambda^*}\)</span> are referred to as <em>Lagrange multipliers</em>. The primary significance of this theorem is that it provides a necessary condition for regular constrained minimizers.</p>
 <hr />
-<p><strong>Case 1: <span class="arithmatex">\(A\)</span> is invertible</strong></p>
-<p>In this case, <span class="arithmatex">\(x^* = A^{-1}b\)</span>. Let <span class="arithmatex">\(f(x)\)</span> be the characteristic polynomial of <span class="arithmatex">\(A\)</span>, by the <a href="https://en.wikipedia.org/wiki/Cayley%E2%80%93Hamilton_theorem">Cayley-Hamilton theorem</a>, <span class="arithmatex">\(A\)</span> satisfies <span class="arithmatex">\(f(x)\)</span>, i.e, <span class="arithmatex">\(f(A) = O\)</span>, therefore <span class="arithmatex">\(x^*\)</span> can be expressed as the linear combination of a set of vectors <span class="arithmatex">\(b, Ab,\ldots, A^{n-1}b\)</span>, implying that <span class="arithmatex">\(x^*\in\mathcal{K}\)</span>.</p>
-<p><strong>Case 2: <span class="arithmatex">\(A\)</span> is not invertible</strong></p>
-<p>In this case, we still want to proceed with the similar trick we've used in <em>Case 1</em>. So it urges me to express <span class="arithmatex">\(x^*\)</span> as <span class="arithmatex">\(x^* = A^{\dagger}b\)</span> where <span class="arithmatex">\(A^{\dagger}\)</span> denotes the pseudo-inverse of <span class="arithmatex">\(A\)</span>. Let <span class="arithmatex">\(A=U\Sigma V^*\)</span> be the singular value decomposition (SVD) of <span class="arithmatex">\(A\)</span> where <span class="arithmatex">\(U\)</span> and <span class="arithmatex">\(V\)</span> and unitary, <span class="arithmatex">\(\Sigma\)</span> the matrix whose diagonal entries <span class="arithmatex">\(\sigma_1,\ldots, \sigma_r\)</span> (<span class="arithmatex">\(r\)</span> being the rank of <span class="arithmatex">\(A\)</span>) the singular values of <span class="arithmatex">\(A\)</span> sorted in descending order. Then <span class="arithmatex">\(A^{\dagger}=V\Sigma^{-1}U^*\)</span>. Write <span class="arithmatex">\(b=\sum_{j\le n}\beta_j u_j\)</span> where <span class="arithmatex">\(\{u_j\}\)</span> are the columns of <span class="arithmatex">\(U\)</span>. Rewerite <span class="arithmatex">\(x^*\)</span> in vector forms (<span class="arithmatex">\(\{v_j\}\)</span> the columns of <span class="arithmatex">\(V\)</span> below), we have</p>
-<div class="arithmatex">\[x^*=V\Sigma^{-1}U^*b=\left(\sum_{j\le r}\sigma_j^{-1}v_ju_j^*\right)\left(\sum_{j\le n}\beta_j u_j\right)=\sum_{j\le r}\beta_j\sigma_j^{-1}v_j\]</div>
-<p>What is <span class="arithmatex">\(A^kb?\)</span></p>
-<div class="arithmatex">\[A^kb = \left(\sum_{j\le r}\sigma_j^k u_j v_j^*\right)b=\sum_{j\le r}\sigma_j^k(v_j^*b)u_j\]</div>
-<p>To prove that <span class="arithmatex">\(x^*\in\mathcal{K}\)</span>, it suffices to show that <span class="arithmatex">\(\beta_j\sigma_j^{-1}v_j = c\sigma_j^k(v_j^*b)u_j\)</span> for some <span class="arithmatex">\(c\in\mathbb{R}\)</span> for every <span class="arithmatex">\(j\le r\)</span>. Or to simplify the notation, <span class="arithmatex">\(v_j = cu_j\)</span> for some <span class="arithmatex">\(c\)</span>, but it is easily found as we can dot product both sides with <span class="arithmatex">\(u_j\)</span> and evaluate <span class="arithmatex">\(c\)</span>.</p>
-<p>We can immediately recognize that <em>Case 2</em> is actually a generalization of <em>Case 1</em> since every matrix admits the singular value decomposition.</p>
-<p>We are now gaining more familiarity with the Krylov subspaces, and we are able to absorb the ideas of the Conjugate Gradient, MINRES, and GMRES algorithms more easily.</p>
+<p><span class="arithmatex">\(\textbf{Sketch of Proof}\)</span></p>
+<p>The equation <span class="arithmatex">\((1)\)</span> means that the gradient <span class="arithmatex">\(\nabla f(\mathbf{x}^*)\)</span> of the objective is a linear combination of gradients of constraints <span class="arithmatex">\(\nabla g_1(\mathbf{x}^*), \cdots, \nabla g_m(\mathbf{x}^*)\)</span> where <span class="arithmatex">\(g_1,\cdots, g_m\)</span> are the components of <span class="arithmatex">\(\mathbf{g}\)</span>. Or equivalently,</p>
+<div class="arithmatex">\[\nabla f(\mathbf{x}^*)\in\text{im}({D\mathbf{g}(\mathbf{x^*})}^T)\tag{2}\]</div>
+<p>where <span class="arithmatex">\(\text{im}(\cdot)\)</span> denotes the image of a linear transformation.</p>
+<p>It can be shown that</p>
+<div class="arithmatex">\[\text{im}({D\mathbf{g}(\mathbf{x^*})}^T) = {\ker(D\mathbf{g}(\mathbf{x^*}))}^{\perp}\tag{3}\]</div>
+<p>To claim <span class="arithmatex">\((3)\)</span>, it suffices to check the following two things:</p>
+<ol>
+<li><span class="arithmatex">\(\text{im}({D\mathbf{g}(\mathbf{x^*})}^T) \subseteq{\ker(D\mathbf{g}(\mathbf{x^*}))}^{\perp}\)</span></li>
+<li><span class="arithmatex">\(\text{rank}(D\mathbf{g}(\mathbf{x^*})^T) = \dim(\ker{D\mathbf{g}(\mathbf{x^*})}^{\perp})\)</span></li>
+</ol>
+<p><span class="arithmatex">\(1.\quad(\subseteq)\)</span> If <span class="arithmatex">\(\mathbf{y}\in\text{im}(D\mathbf{g}(\mathbf{x^*})^T)\)</span>, then <span class="arithmatex">\(\mathbf{y} = D\mathbf{g}(\mathbf{x^*})^T(\mathbf{x})\)</span> for some <span class="arithmatex">\(\mathbf{x}\in\mathbf{R}^m\)</span>. For any <span class="arithmatex">\(\mathbf{v}\in\ker{D\mathbf{g}(\mathbf{x^*})}\)</span>, we have <span class="arithmatex">\(\mathbf{y}\cdot \mathbf{v} = \mathbf{x}\cdot D\mathbf{g}(\mathbf{x^*})\mathbf{v} = \mathbf{y}\cdot\mathbf{0}=0\)</span>. <span class="arithmatex">\(\heartsuit\)</span></p>
+<p><span class="arithmatex">\(2.\quad\text{rank}(Dg(\mathbf{x^*})^T) = \dim(\ker{Dg(\mathbf{x^*})}^{\perp})\)</span></p>
+<p><span class="arithmatex">\(\text{rank}(Dg(\mathbf{x^*})^T) = \text{rank}(Dg(\mathbf{x^*}))\)</span> as every matrix and its transpose have the same rank, and <span class="arithmatex">\(\text{rank}(Dg(\mathbf{x^*})) = m\)</span> by the regularity of <span class="arithmatex">\(\mathbf{x^*}\)</span>. On the other hand, <span class="arithmatex">\(\dim(\ker{Dg(\mathbf{x^*})}^{\perp}) = n - \dim(\ker{Dg(\mathbf{x^*})}) = n - (n - m)\)</span>. <span class="arithmatex">\((2)\)</span> is proved. <span class="arithmatex">\(\heartsuit\)</span></p>
+<p>Hence <span class="arithmatex">\((3)\)</span> is checked.</p>
+<p>With <span class="arithmatex">\((3)\)</span>, it immediately implies that <span class="arithmatex">\((2)\)</span> holds true if and only if the following condition holds true:</p>
+<div class="arithmatex">\[\nabla f(\mathbf{x}^*)\in{\ker(D\mathbf{g}(\mathbf{x}^*))}^{\perp}\tag{4}\]</div>
+<p>Hence the rest of the proof is to show that for each <span class="arithmatex">\(\mathbf{y}\in\ker(D\mathbf{g}(\mathbf{x}^*))\)</span>, we have</p>
+<div class="arithmatex">\[\nabla f(\mathbf{x}^*)\cdot\mathbf{y} = 0\]</div>
+<p>There is also a key result that will be used in the main proof:</p>
+<p><span class="arithmatex">\(\textbf{Theorem 1}\)</span></p>
+<p>Let <span class="arithmatex">\(\mathbf{g}\)</span> be as above and <span class="arithmatex">\(\mathbf{x}\)</span> is a regular point. Let <span class="arithmatex">\(S\)</span> be the constraint set:</p>
+<div class="arithmatex">\[
+S = \{\mathbf{x}\in\mathbb{R}^n\mid \mathbf{g}(\mathbf{x})=\mathbf{0}\}
+\]</div>
+<p>If <span class="arithmatex">\(\mathbf{y}\in\ker(D\mathbf{g}(\mathbf{x}))\)</span>, then there exists a <span class="arithmatex">\(\mathcal{C^1}\)</span>-function <span class="arithmatex">\(\gamma=\gamma(t)\)</span> in <span class="arithmatex">\(S\)</span>, defined near <span class="arithmatex">\(t=0\)</span> into <span class="arithmatex">\(\mathbb{R}^m\)</span>, passing through <span class="arithmatex">\(\mathbf{x}\)</span> with derivative <span class="arithmatex">\(\mathbf{y}\)</span> at <span class="arithmatex">\(\mathbf{x}\)</span>.</p>
+<p>The power of this theorem is to characterize the tangent vectors at a regular point on a constraint set. And its proof relies on the implicit function theorem.</p>
+<p><span class="arithmatex">\(\textbf{Proof of Theorem 1}\)</span></p>
+<p>Since <span class="arithmatex">\(\mathbf{x}\)</span> is regular, the gradients <span class="arithmatex">\(\nabla g_1(\mathbf{x}),\cdots,\nabla g_m(\mathbf{x})\)</span> are linearly independent. Express <span class="arithmatex">\(\mathbf{x} = (\mathbf{a}, \mathbf{b})\)</span> where <span class="arithmatex">\(\mathbf{a}\in\mathbb{R}^m\)</span> and <span class="arithmatex">\(\mathbf{b}\in\mathbb{R}^{n-m}\)</span>. By relabeling the indices of <span class="arithmatex">\(\mathbf{x}\)</span> in such a way that the left-hand <span class="arithmatex">\(m\times m\)</span> submatrix of <span class="arithmatex">\(D\mathbf{g}(\mathbf{x})\)</span> is invertible.</p>
+<p>By the implicit function theorem, there exists an open neighborhood <span class="arithmatex">\(W\subseteq\mathbb{R}^{n-m}\)</span> of <span class="arithmatex">\(\mathbf{b}\)</span> and a <span class="arithmatex">\(\mathcal{C}^1\)</span>-function <span class="arithmatex">\(\mathbf{h}: W\to \mathbb{R}^m\)</span> with <span class="arithmatex">\(\mathbf{h}(\mathbf{b}) = \mathbf{a}\)</span> having the following property:</p>
+<div class="arithmatex">\[
+\mathbf{g}(\mathbf{h}(\mathbf{w}), \mathbf{w}) = 0\quad\forall \mathbf{w}\in W
+\]</div>
+<p>Define <span class="arithmatex">\(\varphi: W\to\mathbb{R}^n\)</span> by <span class="arithmatex">\(\mathbf{w}\mapsto (\mathbf{h}(\mathbf{w}), \mathbf{w})\)</span>, then</p>
+<div class="arithmatex">\[\mathbf{g}(\varphi(\mathbf{w})) = \mathbf{g}((\mathbf{h}(\mathbf{w}), \mathbf{w})) = \mathbf{0}\quad\forall \mathbf{w}\in W\tag{1.1}\]</div>
+<p>Note that <span class="arithmatex">\(\varphi(\mathbf{b}) = (\mathbf{h}(\mathbf{b}), \mathbf{b}) = \mathbf{x}\)</span>.</p>
+<p>By the chain rule, it follows from <span class="arithmatex">\((1.1)\)</span> that</p>
+<div class="arithmatex">\[
+D\mathbf{g}(\varphi(\mathbf{w}))D\varphi(\mathbf{w}) = \mathbf{0}\quad\forall\mathbf{w}\in W\tag{1.2}
+\]</div>
+<p>From the definition of <span class="arithmatex">\(\varphi\)</span>,</p>
+<div class="arithmatex">\[
+D\varphi(\mathbf{w})\mathbf{w'} = (D\mathbf{h}(\mathbf{w})\mathbf{w'}, \mathbf{w'})\quad\forall\mathbf{w, w'}\in W\tag{1.3}
+\]</div>
+<p>In particular, by letting <span class="arithmatex">\(\mathbf{w} = \mathbf{b}\)</span> in <span class="arithmatex">\((1.2)\)</span>, we obtain</p>
+<div class="arithmatex">\[
+\text{im}D\varphi(\mathbf{b})\subseteq\ker{D\mathbf{g}(\varphi(\mathbf{b}))} = \ker{D\mathbf{g}(\mathbf{x})}\tag{1.4}
+\]</div>
+<p>The dimension <span class="arithmatex">\(\text{rank}(D\varphi(\mathbf{b}))\)</span> is at least <span class="arithmatex">\(n-m\)</span> due to <span class="arithmatex">\((1.3)\)</span>, and the dimension <span class="arithmatex">\(\text{nullity}(D\mathbf{g}(x))\)</span> is also <span class="arithmatex">\(n-m\)</span> by the nullity-rank theorem and the regularity of <span class="arithmatex">\(\mathbf{x}\)</span>. Hence the relation in <span class="arithmatex">\((1.4)\)</span> is an equality:</p>
+<div class="arithmatex">\[
+\text{im}D\varphi(\mathbf{b}) = \ker{D\mathbf{g}(\mathbf{x})}\tag{1.5}
+\]</div>
+<p>Write <span class="arithmatex">\(\mathbf{y} = (\mathbf{k}, \mathbf{l})\)</span> where <span class="arithmatex">\(\mathbf{k}\in\mathbb{R}^m\)</span> and <span class="arithmatex">\(\mathbf{l}\in\mathbb{R}^{n-m}\)</span>. By <span class="arithmatex">\((1.5)\)</span> and <span class="arithmatex">\((1.3)\)</span>, there exists <span class="arithmatex">\(\mathbf{w}_0\in W\)</span> such that</p>
+<div class="arithmatex">\[
+\mathbf{y} = D\varphi(\mathbf{b})\mathbf{w}_0 = (D\mathbf{h}(\mathbf{b})\mathbf{w}_0, \mathbf{w}_0)\tag{1.6}
+\]</div>
+<p>Then it is obvious that <span class="arithmatex">\(\mathbf{k}=D\mathbf{h}(\mathbf{b})\mathbf{w}_0\)</span>, <span class="arithmatex">\(\mathbf{l}=\mathbf{w}_0\)</span>, and we derive from <span class="arithmatex">\((1.6)\)</span> that</p>
+<div class="arithmatex">\[
+\mathbf{y} = (D\mathbf{h}(\mathbf{b})\mathbf{l}, \mathbf{l})\tag{1.7}
+\]</div>
+<p>Define <span class="arithmatex">\(\gamma = \gamma(t)\)</span> as follows:</p>
+<div class="arithmatex">\[
+\gamma(t) = \varphi(\mathbf{b} + t\mathbf{l}) = (\mathbf{h}(\mathbf{b}+t\mathbf{l}), \mathbf{b}+t\mathbf{l})
+\]</div>
+<p>Then</p>
+<div class="arithmatex">\[
+\gamma(0) = \varphi(\mathbf{b}) = (\mathbf{h}(\mathbf{b}), \mathbf{b}) = (\mathbf{a}, \mathbf{b}) = \mathbf{x}
+\]</div>
+<p>and from the chain rule and <span class="arithmatex">\((1.7)\)</span>,</p>
+<div class="arithmatex">\[
+\gamma'(0) = D\varphi(\mathbf{b})\mathbf{l} = (D\mathbf{h}(\mathbf{b})\mathbf{l}, \mathbf{l}) = (\mathbf{k}, \mathbf{l}) = \mathbf{y}
+\]</div>
+<p>Now the desired curve <span class="arithmatex">\(\gamma\)</span> is found and the proof is complete. <span class="arithmatex">\(\square\)</span></p>
+<p><span class="arithmatex">\(\textbf{Proof of Method of Lagrange Multipliers}\)</span></p>
+<p>Let <span class="arithmatex">\(\mathbf{y}\in\ker(D\mathbf{g}(\mathbf{x^*}))\)</span>. By <span class="arithmatex">\(\textbf{Theorem 1}\)</span>, there exist a curve <span class="arithmatex">\(\gamma = \gamma(t)\)</span> and <span class="arithmatex">\(t^*\in\mathbb{R}\)</span> such that</p>
+<div class="arithmatex">\[\gamma(t^*) = \mathbf{x^*}\quad\text{and}\quad \gamma'(t^*) = \mathbf{y}\tag{5}\]</div>
+<p>Consider the real-valued function <span class="arithmatex">\(\varphi(t) = f(\gamma(t))\)</span> defined near <span class="arithmatex">\(t=t^*\)</span>. <span class="arithmatex">\(\varphi\)</span> admits its local minimum at <span class="arithmatex">\(t = t^*\)</span> since <span class="arithmatex">\(\mathbf{x^*}\)</span> is a minimizer of Problem <span class="arithmatex">\((P)\)</span>. We have</p>
+<div class="arithmatex">\[\varphi '(t^*) = 0\tag{6}\]</div>
+<p>By the chain rule and <span class="arithmatex">\((5)\)</span>,</p>
+<div class="arithmatex">\[\varphi '(t^*) = Df(\gamma(t^*))\gamma'(t^*) = Df(\mathbf{x^*})\mathbf{y}\tag{7}\]</div>
+<p>Now <span class="arithmatex">\((4)\)</span> is an immediate result of <span class="arithmatex">\((6)\)</span> and <span class="arithmatex">\((7)\)</span>, and this completes the proof. <span class="arithmatex">\(\square\)</span></p>
 
 
 
@@ -723,7 +798,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="March 27, 2025 03:29:31 UTC"><span class="timeago" datetime="2025-03-27T03:29:31+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="March 27, 2025 03:29:31 UTC">2025-03-27</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="December 21, 2025 06:10:03 UTC"><span class="timeago" datetime="2025-12-21T06:10:03+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="December 21, 2025 06:10:03 UTC">2025-12-21</span>
   </span>
 
     
@@ -733,7 +808,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="March 27, 2025 03:29:31 UTC"><span class="timeago" datetime="2025-03-27T03:29:31+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="March 27, 2025 03:29:31 UTC">2025-03-27</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="December 21, 2025 06:10:03 UTC"><span class="timeago" datetime="2025-12-21T06:10:03+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="December 21, 2025 06:10:03 UTC">2025-12-21</span>
   </span>
 
     
@@ -791,7 +866,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../memorize-sherman-morrison-formula/" class="md-footer__link md-footer__link--prev" aria-label="Previous: How to memorize the Sherman-Morrison Formula">
+          <a href="../on-companion-matrices/" class="md-footer__link md-footer__link--prev" aria-label="Previous: On Companion Matrices">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -801,20 +876,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                How to memorize the Sherman-Morrison Formula
+                On Companion Matrices
               </div>
             </div>
           </a>
         
         
           
-          <a href="../on-companion-matrices/" class="md-footer__link md-footer__link--next" aria-label="Next: On Companion Matrices">
+          <a href="../stochastic-calculus/simple/" class="md-footer__link md-footer__link--next" aria-label="Next: Notes on Stochastic Calculus">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                On Companion Matrices
+                Notes on Stochastic Calculus
               </div>
             </div>
             <div class="md-footer__button md-icon">
