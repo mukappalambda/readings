@@ -1,6 +1,6 @@
 # How to memorize the Sherman-Morrison Formula
 
-The Sherman-Morrison formula tells us how we can find the inverse of the matrix $I_n+M$ in certain situations, where $M$ is of rank one. In the literature, the matrix $M$ is often expressed as the product $uv^T$ of vectors $u$ and $v$ comming from $\mathbb{R}^n$.
+The Sherman-Morrison formula tells us how we can find the inverse of the matrix $I_n+M$ in certain situations, where $M$ is of rank one. In the literature, the matrix $M$ is often expressed as the product $uv^T$ of vectors $u$ and $v$ coming from $\mathbb{R}^n$.
 
 This note is not intended to show how to derive the Sherman-Morrison formula in a rigorous fashion. Instead, it serves as a cheatsheet for how one can recall these identities effortlessly in the future. At least, for me.
 

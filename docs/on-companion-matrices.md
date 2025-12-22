@@ -37,7 +37,7 @@ Let $V$ be a finite-dimensional vector space over $F$ and $T:V\to V$ be a linear
 
 $$C_v = \text{span}(\beta)$$
 
-The subspace $C_v$ of $V$ will be called the _cyclic subspace_ of $v$ (in $V$). Note that $C_v$ depends on the underlying $T$ as well but is usually omitted as the linear operator $T$ being discussed is fixed throught the context.
+The subspace $C_v$ of $V$ will be called the _cyclic subspace_ of $v$ (in $V$). Note that $C_v$ depends on the underlying $T$ as well but is usually omitted as the linear operator $T$ being discussed is fixed throughout the context.
 
 By the definition of $C_v$, $C_v$ is $T$-invariant subspace of $V$. Consider $T|_{C_v}$, the linear operator induced by $T$ on $C_v$. Elementary facts about $T|_{C_v}$ are: the characteristic polynomial $\chi_{T_{C_v}}(x)$ and minimal polynomial $\mu_{T|_{C_v}}(x)$ of $T|_{C_v}$ are the same and equal to $\mu_v(x) = f(x)$. Also by the definition of $\mu_v(x)$ and that of $\mu_T(x)$ and $\chi_T(x)$,
 
