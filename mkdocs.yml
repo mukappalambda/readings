@@ -60,6 +60,7 @@ nav:
       - why_krylov_subspace.md
       - on-companion-matrices.md
       - on-lagrange-multipliers-proof.md
+      - applications-of-lagrange-multipliers.md
   - Probability:
       - stochastic-calculus/simple.md
       - gumbel_softmax.md
