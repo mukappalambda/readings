@@ -54,7 +54,7 @@ Hence the rest of the proof is to show that for each $\mathbf{y}\in\ker(D\mathbf
 
 $$\nabla f(\mathbf{x}^*)\cdot\mathbf{y} = 0$$
 
-There is also a key result that will be used in the main proof:
+One might naively assume that moving in any direction in the kernel space at a given point is equivalent to moving in the tangent space at that point. However, this is not true in general. It is true only when the Jacobian is full rank (e.g. the kernel can have a larger dimension than the tangent space at singular points). This is the key result that will be used in the main proof:
 
 $\textbf{Theorem 1}$
 
