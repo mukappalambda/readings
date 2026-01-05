@@ -137,7 +137,7 @@ Feel free to tweak values of `m` and `n`, just to make sure the assumption $m < 
 Here the key points are:
 
 - Two primal minimizers should be numerically the same
-- The absolute value of the duality gap is extremely small (you might encounter the negative duality gap sometimes)
+- The absolute value of the duality gap should be extremely small (you might encounter the negative duality gap sometimes)
 
 ---
 
