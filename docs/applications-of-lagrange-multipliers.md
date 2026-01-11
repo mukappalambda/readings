@@ -210,3 +210,40 @@ which recovers the formula of [distance from a point to a line](https://en.wikip
 ---
 
 ## The Minimum of the Rayleight Quotient
+
+Given a symmetric matrix $A\in\mathbb{R}^n$ and nonzero $x\in\mathbb{R}^n$, the Rayleight Quotient is defined to be
+
+$$\frac{x^TAx}{x^Tx}$$
+
+Consider the minimization problem:
+
+$$\min_{0\neq x\in\mathbb{R}^n} \quad \frac{x^TAx}{x^Tx}$$
+
+This unconstrained problem can be turned to another minimization problem with the equality constraint:
+
+$$
+\begin{aligned}
+\min_{x\in\mathbb{R}^n} &\quad x^TAx\\
+\text{subject to}&\quad x^Tx = 1
+\end{aligned}
+$$
+
+If $x^*\in\mathbb{R}^n$ is a minimizer to the above problem, then there exists $\lambda^*\in\mathbb{R}$ such that
+
+$$
+2{x^*}^TA - 2\lambda^*{x^*}^T = 0^T
+$$
+
+(Notice that $\lambda^*$ is a real number, so $\lambda^* = {\lambda^*}^T$)
+
+which means that
+
+$$Ax^* = \lambda^*x^*$$
+
+Hence $x^*$ is an eigenvector of $A$ and $\lambda^*$ is the eigenvalue of $A$ with respect to $x^*$.
+
+Now the objective evaluated at $x=x^*$ becomes
+
+$${x^*}^TAx^* = {x^*}^T\lambda^*x^* = \lambda^* \|x^*\|^2 = \lambda^*$$
+
+That means that the objective attains its minimum at eigenvectors of $A$ that correspond to the smallest eigenvalues.
