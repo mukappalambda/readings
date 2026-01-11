@@ -1,6 +1,8 @@
-# Practical Applications of Lagrange Multipliers
+# Applications of Lagrange Multipliers
 
-The purpose of this note is to demonstrate a number of problem classes that can be solved using the method of Lagrange multipliers.
+The purpose of this note is to present a number of problem classes that can be solved using the method of Lagrange multipliers.
+
+---
 
 ## Equality-Constrained Quadratic Programming (ECQP)
 
@@ -247,3 +249,7 @@ Now the objective evaluated at $x=x^*$ becomes
 $${x^*}^TAx^* = {x^*}^T\lambda^*x^* = \lambda^* \|x^*\|^2 = \lambda^*$$
 
 That means that the objective attains its minimum at eigenvectors of $A$ that correspond to the smallest eigenvalues.
+
+---
+
+Strictly speaking, the _Minimum-Norm Problem_ and _Orthogonal Projection of a Point Onto the Affine Set_ are both instances of ECQP problems, so this post does not introduce many distinct problem classes. However, I still present them together because they are merely different faces of the same underlying concept.
