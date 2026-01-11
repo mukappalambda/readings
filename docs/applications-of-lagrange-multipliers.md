@@ -4,7 +4,7 @@ The purpose of this note is to demonstrate a number of problem classes that can 
 
 ## Equality-Constrained Quadratic Programming (ECQP)
 
-Let $Q\in\mathbb{R}^n$ be a PSD matrix, $c\in\mathbb{R}^n$, $d\in\mathbb{R}$, $A\in\mathbb{R}^{m\times n}, b\in\mathbb{R}^m$ where $m<n$ and $\text{rank}A = m$.
+Let $Q\in\mathbb{R}^n$ be a symmetric and positive-definite matrix, $c\in\mathbb{R}^n$, $d\in\mathbb{R}$, $A\in\mathbb{R}^{m\times n}, b\in\mathbb{R}^m$ where $m<n$ and $\text{rank}A = m$.
 
 Consider the following minimization problem with equality constraints:
 
@@ -27,7 +27,12 @@ If $x^*\in\mathbb{R}^n$ is a minimizer, then by the method of Lagrange multiplie
 
 $${x^*}^TQ + c^T + {\lambda^*}^TA = 0^T$$
 
-where the facts $Df(x^*) = {x^*}^TQ + c^T$ and $Dg(x^*) = A$ are used.
+where $0$ on the R.H.S. denotes the zero vector in $\mathbb{R}^n$.
+
+Note that the following facts are being used implicitly:
+
+- $Df(x^*) = \frac{1}{2}{x^*}^T(Q + Q^T) + c^T = {x^*}^TQ + c^T$, and
+- $Dg(x^*) = A$
 
 Since $x^*$ by definition is a minimizer, it has to satisfy the primal feasibility equality:
 
@@ -48,6 +53,8 @@ $$AQ^{-1}A^T\lambda^* = -b - AQ^{-1}c$$
 or
 
 $$\lambda^* = -(AQ^{-1}A^T)^{-1}b - (AQ^{-1}A^T)^{-1}AQ^{-1}c$$
+
+Here $AQ^{-1}A^T$ is invertible since $\text{rank}A = m$ and $Q$ is invertible, so is $AQ^{-1}A^T$.
 
 Now $x^*$ has the following form:
 
