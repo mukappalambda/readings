@@ -154,7 +154,7 @@ $$
 \end{aligned}
 $$
 
-Note that the objective is not differentiable at $x=0\in\mathbb{R}^n$, one often consider the following problem instead as both problems have the same minimizer:
+Note that the objective is not differentiable at $x=0\in\mathbb{R}^n$, one often considers the following problem instead as both problems have the same minimizer:
 
 $$
 \begin{aligned}
