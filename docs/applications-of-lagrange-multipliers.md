@@ -56,7 +56,7 @@ or
 
 $$\lambda^* = -(AQ^{-1}A^T)^{-1}b - (AQ^{-1}A^T)^{-1}AQ^{-1}c$$
 
-Here $AQ^{-1}A^T$ is invertible since $\text{rank}A = m$ and $Q$ is invertible, so is $AQ^{-1}A^T$.
+Here $AQ^{-1}A^T$ is invertible since $\text{rank}A = m$ and $Q$ is invertible.
 
 Now $x^*$ has the following form:
 
@@ -141,7 +141,7 @@ duality gap: 1.8026469206233742e-11
 
 In this code, my implementation `first_ecqp_solver()` is just a PoC used for validating the formula derived, not meant to compete with the battle-tested [minimize()](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html) function in `scipy`.
 
-Feel free to tweak values of `m` and `n`, just to make sure the assumption $m < n$ holds.
+Feel free to tweak values of `m` and `n`, just make sure the assumption $m < n$ holds.
 
 Here the key points are:
 
