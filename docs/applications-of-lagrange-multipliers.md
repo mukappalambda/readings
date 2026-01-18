@@ -172,9 +172,13 @@ $$
 \end{aligned}
 $$
 
-This problem is exactly a member of the ECQP class. Setting $Q=I$ and $c=0$, we have:
+Before solving this problem, let's approach it from a geometric perspective. We want to find the "shortest" $x$ that satisfies $Ax=b$. In general, any such $x$ can be written as $x = x_p + x_n$ where $x_p$ is the projection of $x$ onto the row space of $A$ and $x_n$ is the projection of $x$ onto the null space of $A$. Thus, the shortest $x$ is the one that satisfies $x_p = b$ and $x_n = 0$. 
+
+Now let's return to our original treatment of this problem. This problem is exactly a member of the ECQP class. Setting $Q=I$ and $c=0$, we have:
 
 $$x^* = A^T(AA^T)^{-1}b$$
+
+It is worthwhile to understand the solution from different perspectives. 
 
 ---
 
