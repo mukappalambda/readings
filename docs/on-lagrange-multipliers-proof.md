@@ -38,7 +38,7 @@ To claim $(3)$, it suffices to check the following two things:
 1. $\text{im}({D\mathbf{g}(\mathbf{x^*})}^T) \subseteq{\ker(D\mathbf{g}(\mathbf{x^*}))}^{\perp}$
 2. $\text{rank}(D\mathbf{g}(\mathbf{x^*})^T) = \dim(\ker{D\mathbf{g}(\mathbf{x^*})}^{\perp})$
 
-$1.\quad(\subseteq)$ If $\mathbf{y}\in\text{im}(D\mathbf{g}(\mathbf{x^*})^T)$, then $\mathbf{y} = D\mathbf{g}(\mathbf{x^*})^T(\mathbf{x})$ for some $\mathbf{x}\in\mathbf{R}^m$. For any $\mathbf{v}\in\ker{D\mathbf{g}(\mathbf{x^*})}$, we have $\mathbf{y}\cdot \mathbf{v} = \mathbf{x}\cdot D\mathbf{g}(\mathbf{x^*})\mathbf{v} = \mathbf{y}\cdot\mathbf{0}=0$. $\heartsuit$
+$1.\quad(\subseteq)$ If $\mathbf{y}\in\text{im}(D\mathbf{g}(\mathbf{x^*})^T)$, then $\mathbf{y} = D\mathbf{g}(\mathbf{x^*})^T(\mathbf{x})$ for some $\mathbf{x}\in\mathbb{R}^m$. For any $\mathbf{v}\in\ker{D\mathbf{g}(\mathbf{x^*})}$, we have $\mathbf{y}\cdot \mathbf{v} = \mathbf{x}\cdot D\mathbf{g}(\mathbf{x^*})\mathbf{v} = \mathbf{y}\cdot\mathbf{0}=0$. $\heartsuit$
 
 $2.\quad\text{rank}(Dg(\mathbf{x^*})^T) = \dim(\ker{Dg(\mathbf{x^*})}^{\perp})$
 
