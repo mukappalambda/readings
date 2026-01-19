@@ -19,7 +19,7 @@ In this case, $x^* = A^{-1}b$. Let $f(x)$ be the characteristic polynomial of $A
 
 **Case 2: $A$ is not invertible**
 
-In this case, we still want to proceed with the similar trick we've used in _Case 1_. So it urges me to express $x^*$ as $x^* = A^{\dagger}b$ where $A^{\dagger}$ denotes the pseudo-inverse of $A$. Let $A=U\Sigma V^*$ be the singular value decomposition (SVD) of $A$ where $U$ and $V$ and unitary, $\Sigma$ the matrix whose diagonal entries $\sigma_1,\ldots, \sigma_r$ ($r$ being the rank of $A$) the singular values of $A$ sorted in descending order. Then $A^{\dagger}=V\Sigma^{-1}U^*$. Write $b=\sum_{j\le n}\beta_j u_j$ where $\{u_j\}$ are the columns of $U$. Rewerite $x^*$ in vector forms ($\{v_j\}$ the columns of $V$ below), we have
+In this case, we still want to proceed with the similar trick we've used in _Case 1_. So it urges me to express $x^*$ as $x^* = A^{\dagger}b$ where $A^{\dagger}$ denotes the pseudo-inverse of $A$. Let $A=U\Sigma V^*$ be the singular value decomposition (SVD) of $A$ where $U$ and $V$ are unitary, $\Sigma$ the matrix whose diagonal entries $\sigma_1,\ldots, \sigma_r$ ($r$ being the rank of $A$) the singular values of $A$ sorted in descending order. Then $A^{\dagger}=V\Sigma^{-1}U^*$. Write $b=\sum_{j\le n}\beta_j u_j$ where $\{u_j\}$ are the columns of $U$. Rewerite $x^*$ in vector forms ($\{v_j\}$ the columns of $V$ below), we have
 
 $$x^*=V\Sigma^{-1}U^*b=\left(\sum_{j\le r}\sigma_j^{-1}v_ju_j^*\right)\left(\sum_{j\le n}\beta_j u_j\right)=\sum_{j\le r}\beta_j\sigma_j^{-1}v_j$$
 
