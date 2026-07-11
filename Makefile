@@ -1,8 +1,8 @@
 help: ## Show help message
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | column -s "##" -t
 
-install: ## Run poetry install
-	@poetry install
+sync: ## Run uv sync
+	@uv sync
 
-serve-docs: install ## Serve the mkdocs
-	@poetry run mkdocs serve -a localhost:9090
+serve-docs: sync ## Serve the mkdocs
+	@uv run mkdocs serve -a localhost:9090
