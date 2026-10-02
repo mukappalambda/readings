@@ -4,5 +4,5 @@ help: ## Show help message
 sync: ## Run uv sync
 	@uv sync
 
-serve-docs: sync ## Serve the mkdocs
-	@uv run mkdocs serve -a localhost:9090
+serve-docs: sync ## Serve the doc site
+	@uv run zensical serve -a localhost:9090
