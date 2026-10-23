@@ -12,6 +12,9 @@ edit_uri = "blob/main/docs/"
 
 nav = [
   { "Home" = "index.md" },
+  { "Analysis" = [
+    "how-bolzano-weierstrass-theorem-leads-to-sequential-compactness",
+  ] },
   { "Linear Algebra" = [
     "memorize-sherman-morrison-formula.md",
     "why_krylov_subspace.md",
