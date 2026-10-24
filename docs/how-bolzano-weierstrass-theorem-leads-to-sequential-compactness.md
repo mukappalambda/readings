@@ -1,8 +1,8 @@
 # How Bolzano-Weierstrass Theorem Leads to Sequential Compactness
 
-This article starts from the Bolzano-Weierstrass theorem and review the equivalence of compactness and sequential compactness in metric spaces.
+The intent of this article is to start from the Bolzano-Weierstrass theorem and review the equivalence of compactness and sequential compactness in metric spaces.
 
-The Bolzano-Weierstrass theorem give the sufficient condition for the existence of limit points in $\mathbb{R}$.
+The Bolzano-Weierstrass theorem gives the sufficient condition for the existence of limit points in $\mathbb{R}$.
 
 **Bolzano-Weierstrass theorem**
 
@@ -52,7 +52,7 @@ Let $X$ be a sequentially compact space. Then $X$ is compact.
 
 Let $X$ be a metric space in which every infinite subset has a limit point. Then $X$ is separable by Theorem 6. It follows that every open cover of $X$ has a countable subcover $\{G_n\}_{n\in\mathbb{N}}$. Suppose that $X$ has no finite subcollection of $\{G_n\}$ that covers $X$. Then $F_n \coloneqq (\bigcup_{i=1}^n G_i)^c$ is nonempty for each $n$, and $\bigcap F_n=\phi$.
 
-Let $E$ be a set which contains a point from each $F_n$. $E$ is infinite and hence has a limit point, say $p$. Since $\{G_n\}$ covers $X$, $p\in G_n$ for some $n$, and there is a neighborhood $N_r(p)$ of $p$ that is contained in $G_n$. Since $p$ is a limit point of $E$, $N_r(p)$ contains infinitely many points of $E$. TBD $\square$
+Let $E$ be a set which contains a point from each $F_n$. $E$ is infinite and hence has a limit point, say $p$. Since $\{G_n\}$ covers $X$, $p\in G_n$ for some $n$, and there is a neighborhood $U$ of $p$ that is contained in $G_n$. Since $p$ is a limit point of $E$, $U$ contains infinitely many points of $E$. Thus we can always find $p_m\in U$ with $p_m\in F_m$ and $m\ge n$. Since $p_m\in U\subseteq G_n$, $p_m\notin F_n$. Since $m\ge n$, $F_m\subseteq F_n$ and $p_m\notin F_m$, a contradiction. $\square$
 
 **Theorem 6**
 
@@ -60,6 +60,6 @@ Let $X$ be a metric space in which every infinite subset has a limit point. Then
 
 **Proof**
 
-Let $\delta > 0$. Pick $x_1\in X$, choose $x_2\in X$ such that $d(x_1, x_2)\ge \delta$ if possible. Then choose $x_3\in X$ such that $d(x_i, x_3)\ge \delta$ for $i=1, 2$ if possible. Continueing in this fashion, we want to claim that this process will stop after a finite number of steps. For otherwise, these $\{x_n\}$ form an infinite subset in $X$ that has a limit point by assumption, contradicting to Theorem 3. It completes this claim. As a result, $X$ is covered by finitely many neighborhoods of radius $\delta$ whose centers are those $x_n$.
+Let $\delta > 0$. Pick $x_1\in X$, choose $x_2\in X$ such that $d(x_1, x_2)\ge \delta$ if possible. Then choose $x_3\in X$ such that $d(x_i, x_3)\ge \delta$ for $i=1, 2$ if possible. Continuing in this fashion, we want to claim that this process will stop after a finite number of steps. For otherwise, these $\{x_n\}$ form an infinite subset in $X$ that has a limit point by assumption, contradicting to Theorem 3. It completes this claim. As a result, $X$ is covered by finitely many neighborhoods of radius $\delta$ whose centers are those $x_n$.
 
-Take $\delta = 1/n$ for $n\in\mathbb{N}$, and let $E$ be the set of those centers chosen in the above manner. $E$ is countable as it is the countable union of finite sets. To show that $E$ is dense in $X$. Let $p\in X$. Let $r>0$ and consider $N_r(p)$. Choose $N\in\mathbb{N}$ such that $r > 1/N$ by the Archimedean property. From the argument just derived, $p$ is in one of the neighborhoods whose radius is less than $1/N$, say $N_{1/N}(x_i)$, proving that $p$ is a limit point of $E$ or $p\in E$ (if $p=x_i$). $\square$
+Take $\delta = 1/n$ for $n\in\mathbb{N}$, and let $E$ be the set of those centers chosen in the above manner. $E$ is countable as it is the countable union of finite sets. To show that $E$ is dense in $X$. Let $p\in X$. Let $r>0$ and consider $N_r(p)$. Choose $N\in\mathbb{N}$ such that $r > 1/N$ by the Archimedean property. From the argument just derived, $p$ is in one of the neighborhoods whose radius is less than $1/N$, say $N_{1/N}(x_i)$ for some $x_i\in E$, proving that $p$ is a limit point of $E$ or $p\in E$ (if $p=x_i$). $\square$
